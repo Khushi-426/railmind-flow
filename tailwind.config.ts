@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -51,6 +52,26 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				// Railway signal colors
+				signal: {
+					green: 'hsl(var(--signal-green))',
+					'green-foreground': 'hsl(var(--signal-green-foreground))',
+					amber: 'hsl(var(--signal-amber))',
+					'amber-foreground': 'hsl(var(--signal-amber-foreground))',
+					red: 'hsl(var(--signal-red))',
+					'red-foreground': 'hsl(var(--signal-red-foreground))'
+				},
+				// Railway-specific design tokens
+				control: {
+					panel: 'hsl(var(--control-panel))',
+					status: 'hsl(var(--status-bar))',
+					grid: 'hsl(var(--grid-line))'
+				},
+				data: {
+					high: 'hsl(var(--data-high))',
+					medium: 'hsl(var(--data-medium))',
+					low: 'hsl(var(--data-low))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
