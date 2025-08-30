@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { BarChart3, TrendingUp, Users, Clock } from "lucide-react";
 
@@ -81,18 +82,25 @@ const getEventIcon = (type: string) => {
 
 export function PerformanceMetrics() {
   return (
-    <Card className="bg-card border-border shadow-lg">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
-          <BarChart3 className="h-5 w-5 text-primary" />
-          <span>Performance Analytics</span>
+    <Card className="bg-card border-border shadow-lg hover-lift transition-smooth">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <BarChart3 className="h-5 w-5 text-primary" />
+            </div>
+            <span className="text-lg font-semibold">Performance Analytics</span>
+          </div>
+          <Badge variant="secondary" className="bg-signal-green/10 text-signal-green border-signal-green/20">
+            Real-time
+          </Badge>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <CardContent className="pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Metrics */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground mb-3">Key Performance Indicators</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-4 p-3 bg-accent/30 rounded-lg">Key Performance Indicators</h3>
             {metrics.map((metric) => (
               <div key={metric.label} className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
@@ -131,21 +139,23 @@ export function PerformanceMetrics() {
 
           {/* Recent Events */}
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground mb-3">Recent System Events</h3>
-            <div className="space-y-3 max-h-80 overflow-y-auto">
+            <h3 className="text-sm font-semibold text-foreground mb-4 p-3 bg-accent/30 rounded-lg">Recent System Events</h3>
+            <div className="space-y-3 max-h-80 overflow-y-auto pr-2">
               {recentEvents.map((event, index) => (
                 <div 
                   key={index}
-                  className="flex items-start space-x-3 p-3 rounded-lg bg-control-panel border border-border"
+                  className="group flex items-start space-x-3 p-3 rounded-lg bg-control-panel border border-border hover:bg-accent/30 hover:border-accent transition-smooth"
                 >
                   <div className="flex items-center space-x-2 min-w-0 flex-1">
                     {getEventIcon(event.type)}
                     <div className="min-w-0 flex-1">
-                      <div className="text-sm text-foreground">{event.event}</div>
-                      <div className="text-xs text-signal-green">{event.impact}</div>
+                      <div className="text-sm text-foreground font-medium">{event.event}</div>
+                      <div className="text-xs text-signal-green bg-signal-green/10 px-2 py-1 rounded mt-1 inline-block">
+                        {event.impact}
+                      </div>
                     </div>
                   </div>
-                  <div className="text-xs text-muted-foreground font-mono">
+                  <div className="text-xs text-muted-foreground font-mono bg-accent/30 px-2 py-1 rounded">
                     {event.time}
                   </div>
                 </div>
